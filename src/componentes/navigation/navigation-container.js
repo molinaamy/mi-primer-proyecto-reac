@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
-export default class NavigationComponent extends Component {
-    constructor(){
-        super();
-    }
-    render() {
+ const NavigationComponent = (props) => {
+      
+
         return(
 
         <div className="nav-wrapper">
@@ -41,4 +39,5 @@ export default class NavigationComponent extends Component {
         
         );
     }
-}
+ export default NavigationComponent;
+ 
