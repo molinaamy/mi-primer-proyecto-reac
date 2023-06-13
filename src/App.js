@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import moment from 'moment';
 
-import { BrowserRouter as Router, Switch, Route, NavLink, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Routes} from 'react-router-dom';
 import PortfolioContainer from "./componentes/portfolio/portfolio-container";
 import NavigationContainer from "./componentes/navigation/navigation-container";
 import Home from "./componentes/pages/home";
@@ -13,6 +13,7 @@ import Auth from "./componentes/pages/auth";
 import NoMatch from "./componentes/pages/no-match";
 import "./style/main.scss";
 import axios from "axios";
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +24,7 @@ export default class App extends Component {
 
     this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
     this.handleUnsuccessfulLogin = this.handleUnsuccessfulLogin.bind(this);
+    this.handleSuccessfulLogout = this. handleSuccessfulLogout.bind(this);
   }
 
   handleSuccessfulLogin() {
@@ -36,6 +38,13 @@ export default class App extends Component {
       loggedInStatus: "NOT_LOGGED_IN"
     });
   }
+
+  handleSuccessfulLogout() {
+    this.setState({
+      loggedInStatus: "NOT_LOGGED_IN"
+    });
+  }
+
 
   checkLoginStatus() {
     return axios
@@ -72,38 +81,43 @@ export default class App extends Component {
   render() {
     return (
       <div className="container">
-        <Router>
-          <div>
-            <NavigationContainer />
+       <Router>
+        <div>
+          <NavigationContainer 
+          loggedInStatus={this.state.loggedInStatus} 
+          handleSuccessfulLogout={this.handleSuccessfulLogout}
+          />
+          
+          
+          <h2>{this.state.loggedInStatus}</h2>
 
-            <h2>{this.state.loggedInStatus}</h2>
-
-            <Switch>
-              <Route exact path="/" component={Home} />
-
-              <Route
-                path="/auth"
-                render={props => (
-                  <Auth
-                    {...props}
-                    handleSuccessfulLogin={this.handleSuccessfulLogin}
-                    handleUnsuccessfulLogin={this.handleUnsuccessfulLogin}
-                  />
-                )}
+          <Routes>
+            <Route exact path="/" element={<Home/>}/>
+       
+            <Route
+            path="/auth"
+            element={
+              <Auth
+                {...this.props}
+                handleSuccessfulLogin={this.handleSuccessfulLogin}
+                handleUnsuccessfulLogin={this.handleUnsuccessfulLogin}
+                
               />
+            }
+/>
 
-              <Route path="/about-me" component={About} />
-              <Route path="/contact" component={Contact} />
-              <Route path="/blog" component={Blog} />
-              <Route
-                exact
-                path="/portfolio/:slug"
-                component={PortfolioDetail}
-              />
-              <Route component={NoMatch} />
-            </Switch>
-          </div>
-        </Router>
+            <Route path="/about-me" element={<About/>}/>
+            <Route path="/contact" element={<Contact/>}/>
+            <Route path="/blog" element={<Blog/>}/>
+            {/* {this.state.loggedInStatus === "LOGGED_IN" ?(
+                this.authorizedPages()
+              ) : null} */}
+
+            <Route exact path="/portfolio/:slug" element={<PortfolioDetail/>} />
+            <Route path="/:slug" element={<NoMatch />} />
+          </Routes>
+        </div>
+      </Router>
       </div>
     );
   }
