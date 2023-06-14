@@ -6,8 +6,8 @@ import axios from "axios";
     const dynamicLink = (route, linkText) => {
         return (
             <div className="nav-link-wrapper">
-            <NavLink to="blog" activeClassName="nav-link-active">
-                Blog
+            <NavLink to={route} activeClassName="nav-link-active">
+               portfolio Manager
             </NavLink>
             </div>
         
@@ -53,9 +53,15 @@ import axios from "axios";
          </NavLink>
          </div>
 
+         <div className="nav-link-wrapper">
+         <NavLink to="/blog" activeClassName="nav-link-active">
+             BLog
+         </NavLink>
+         </div>
+
          
          {props.loggedInStatus === "LOGGED_IN" ?  (
-        dynamicLink ("/blog, Blog") 
+        dynamicLink ("/portfolio-manager", "portfolio-manager") 
          ) : null} 
 
            
@@ -69,4 +75,5 @@ import axios from "axios";
         
         );
     }
- export default withRouter(NavigationComponent);
+
+    export default NavigationComponent;

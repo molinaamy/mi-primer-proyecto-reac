@@ -12,7 +12,7 @@ export default class Auth extends Component {
 
  handleSuccessfulAuth() {
    this.props.handleSuccessfulLogin();
-   this.props.history.push("/");
+  
  }
 
  handleUnsuccessfulAuth() {

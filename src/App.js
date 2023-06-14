@@ -13,6 +13,7 @@ import Auth from "./componentes/pages/auth";
 import NoMatch from "./componentes/pages/no-match";
 import "./style/main.scss";
 import axios from "axios";
+import portfoliomanager from "./componentes/portfolio/portfolio-manager";
 
 export default class App extends Component {
   constructor(props) {
@@ -43,6 +44,11 @@ export default class App extends Component {
     this.setState({
       loggedInStatus: "NOT_LOGGED_IN"
     });
+  }
+  authorizedPages(){
+    return [
+    <Route path="/portfolio-manager" Component={portfoliomanager} />];
+    
   }
 
 
@@ -87,9 +93,6 @@ export default class App extends Component {
           loggedInStatus={this.state.loggedInStatus} 
           handleSuccessfulLogout={this.handleSuccessfulLogout}
           />
-          
-          
-          <h2>{this.state.loggedInStatus}</h2>
 
           <Routes>
             <Route exact path="/" element={<Home/>}/>
@@ -109,9 +112,12 @@ export default class App extends Component {
             <Route path="/about-me" element={<About/>}/>
             <Route path="/contact" element={<Contact/>}/>
             <Route path="/blog" element={<Blog/>}/>
-            {/* {this.state.loggedInStatus === "LOGGED_IN" ?(
+            {this.state.loggedInStatus === "LOGGED_IN" ? 
                 this.authorizedPages()
-              ) : null} */}
+               : null}
+
+
+
 
             <Route exact path="/portfolio/:slug" element={<PortfolioDetail/>} />
             <Route path="/:slug" element={<NoMatch />} />

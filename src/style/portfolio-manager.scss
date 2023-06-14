@@ -1,0 +1,11 @@
+.portfolio-manager-wrapper {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+
+    .left-column {
+        background-color: rgb(219, 205, 205);
+    }
+    .right-column {
+        background-color: rgb(33, 35, 36);
+    }
+}
