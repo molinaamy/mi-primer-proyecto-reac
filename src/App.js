@@ -13,7 +13,7 @@ import Auth from "./componentes/pages/auth";
 import NoMatch from "./componentes/pages/no-match";
 import "./style/main.scss";
 import axios from "axios";
-import portfoliomanager from "./componentes/portfolio/portfolio-manager";
+import PortfolioManager from "./componentes/pages/portfolio-manager";
 
 export default class App extends Component {
   constructor(props) {
@@ -47,8 +47,11 @@ export default class App extends Component {
   }
   authorizedPages(){
     return [
-    <Route path="/portfolio-manager" Component={portfoliomanager} />];
-    
+    <Route key="portfolio-manager"
+     path="/portfolio-manager" 
+     element={<PortfolioManager/>} 
+     />
+    ];
   }
 
 
