@@ -2,6 +2,19 @@
     display: flex;
     justify-content: space-between;
     padding: 30px;
+
+    .right-side {
+      a {
+        margin-left:15px;
+        cursor: pointer;
+        color:rgb(20, 225, 225);
+        transition: 0.5s ease-in-out;
+
+        &:hover {
+          color:cadetblue;
+        }
+      }
+    }
   
     .right-side {
       a{

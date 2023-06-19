@@ -33,6 +33,37 @@ export default class PortfolioForm extends Component {
     this.logoRef = React.createRef();
   }
 
+  componentDidUpdate() {
+    if (Object.keys(this.props.portfolioToEdit).length > 0) {
+      const {
+        id,
+        name,
+        description,
+        category,
+        position,
+        url,
+        thumb_image_url,
+        banner_image_url,
+        logo_url
+      } = this.props.portfolioToEdit;
+
+      this.props.clearportfolioToEdit();
+
+      this.setState({
+        id: id,
+        name: name || "",
+        description: description || "",
+        category: category || "eCommerce",
+        position: position || "",
+        url: url || "",
+        // thumb_image:"",
+        // banner_image: "",
+        // logo: ""
+      });
+    }
+  }
+
+
   handleThumbDrop() {
     return {
       addedfile: file => this.setState({ thumb_image: file })
@@ -99,7 +130,7 @@ export default class PortfolioForm extends Component {
   handleSubmit(event) {
     axios
       .post(
-        "https://jordan.devcamp.space/portfolio/portfolio_items",
+        "https://molina.devcamp.space/portfolio/portfolio_items",
         this.buildForm(),
         { withCredentials: true }
       )

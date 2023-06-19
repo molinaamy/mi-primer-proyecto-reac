@@ -26,7 +26,7 @@ this.setState({
 });
 }
 getProtfolioItems()  {
-  axios.get('https://jordan.devcamp.space/portfolio/portfolio_items')
+  axios.get('https://molina.devcamp.space/portfolio/portfolio_items')
   .then (response =>   {
     console.log("response data", response);
     this.setState({
