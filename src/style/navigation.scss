@@ -3,6 +3,11 @@
     justify-content: space-between;
     padding: 30px;
   
+    .right-side {
+      a{
+        margin-left:15px ;
+      }
+    }
     .left-side {
       display: flex;
     }
