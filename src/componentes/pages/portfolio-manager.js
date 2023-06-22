@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import PortfolioSidebarList from "./portfolio-sidebar-list";
-import PortfolioForm from "./portfolio-form";
+import PortfolioSidebarList from "../portfolio/portfolio-sidebar-list";
+import PortfolioForm from "../portfolio/portfolio-form";
 
 export default class PortfolioManager extends Component {
   constructor() {
@@ -67,7 +67,7 @@ export default class PortfolioManager extends Component {
   getPortfolioItems() {
     axios
       .get(
-        "https://https://molina.devcamp.space/portfolio/portfolio_items?order_by=created_at&direction=desc",
+        "https://molina.devcamp.space/portfolio/portfolio_items?order_by=created_at&direction=desc",
         {
           withCredentials: true
         }
