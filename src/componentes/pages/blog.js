@@ -11,10 +11,10 @@ class Blog extends Component {
 
     this.state = {
       blogItems: [],
-      totalCount:0,
-      currentPage:0,
-      isLoading:true,
-      blogModalIsOpen:false
+      totalCount: 0,
+      currentPage: 0,
+      isLoading: true,
+      blogModalIsOpen: false
     };
 
     this.getBlogItems = this.getBlogItems.bind(this);
@@ -22,6 +22,16 @@ class Blog extends Component {
     window.addEventListener("scroll", this.onScroll, false);
     this.handleNewBlogClick = this.handleNewBlogClick.bind(this);
     this.handleModalClose = this.handleModalClose.bind(this);
+    this.handleSuccessfulNewBlogSubmission = this.handleSuccessfulNewBlogSubmission.bind(
+      this
+    );
+  }
+
+  handleSuccessfulNewBlogSubmission(blog) {
+    this.setState({
+      blogModalIsOpen: false,
+      blogItems: [blog].concat(this.state.blogItems)
+    });
   }
 
   handleModalClose() {
@@ -30,21 +40,20 @@ class Blog extends Component {
     });
   }
 
-  handleNewBlogClick(){
+  handleNewBlogClick() {
     this.setState({
       blogModalIsOpen: true
     });
   }
 
-
   onScroll() {
-    if ( 
+    if (
       this.state.isLoading ||
       this.state.blogItems.length === this.state.totalCount
     ) {
       return;
     }
-  
+
     if (
       window.innerHeight + document.documentElement.scrollTop ===
       document.documentElement.offsetHeight
@@ -52,15 +61,20 @@ class Blog extends Component {
       this.getBlogItems();
     }
   }
-  getBlogItems() {
-      this .setState({
-        currentPage: this.state.currentPage + 1
 
-      });
+  getBlogItems() {
+    this.setState({
+      currentPage: this.state.currentPage + 1
+    });
+
     axios
-      .get("https://molina.devcamp.space/portfolio/portfolio_blogs?page={this.state.currentPage}", {
-        withCredentials: true
-      })
+      .get(
+        `https://molina.devcamp.space/portfolio/portfolio_blogs?page=${this
+          .state.currentPage}`,
+        {
+          withCredentials: true
+        }
+      )
       .then(response => {
         console.log("gettting", response.data);
         this.setState({
@@ -78,25 +92,32 @@ class Blog extends Component {
     this.getBlogItems();
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     window.removeEventListener("scroll", this.onScroll, false);
   }
 
   render() {
     const blogRecords = this.state.blogItems.map(blogItem => {
-      return <BlogItem key={blogItem.id} blogItem={blogItem}/>
+      return <BlogItem key={blogItem.id} blogItem={blogItem} />;
     });
 
     return (
       <div className="blog-container">
         <BlogModal
-        handleModalClose={this.handleModalClose}
-         modalIsOpen={this.state.blogModalIsOpen} 
-         />
+          handleSuccessfulNewBlogSubmission={
+            this.handleSuccessfulNewBlogSubmission
+          }
+          handleModalClose={this.handleModalClose}
+          modalIsOpen={this.state.blogModalIsOpen}
+        />
 
-        <div className="new-blog-link">
-          <a onClick={this.handleNewBlogClick}>Open Modal!</a>
-        </div>
+        {this.props.loggedInStatus === "LOGGED_IN" ? (
+          <div className="new-blog-link">
+            <a onClick={this.handleNewBlogClick}>
+              <FontAwesomeIcon icon="plus-circle" />
+            </a>
+          </div>
+        ) : null}
 
         <div className="content-container">{blogRecords}</div>
 

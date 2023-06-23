@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, NavLink, Routes} from "react-router-dom";
 import moment from "moment";
 import axios from "axios";
-import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faSignOutAlt, faEdit, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import Icons from "./helpers/icons";
 
 
 import PortfolioContainer from "./componentes/portfolio/portfolio-container";
@@ -21,7 +20,7 @@ import "./style/main.scss";
 import PortfolioManager from "./componentes/pages/portfolio-manager";
 
 
-library.add(faTrash, faSignOutAlt, faEdit, faSpinner);
+
 
 export default class App extends Component {
   constructor(props) {
@@ -122,8 +121,25 @@ export default class App extends Component {
               />
               <Route path="/about-me" element={<About />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/b/slug"element={<BlogDetail />} />
+
+              <Route
+                path="/blog"
+                render={props => (
+                  <Blog {...props} loggedInStatus={this.state.loggedInStatus} />
+                )}
+              />
+
+
+              <Route path="/b/:slug" element={BlogDetail} />
+              {this.state.loggedInStatus === "LOGGED_IN" ? (
+                this.authorizedPages()
+              ) : null}
+              <Route
+                exact
+                path="/portfolio/:slug"
+                element={PortfolioDetail}
+              />
+
               {this.state.loggedInStatus === "LOGGED_IN" ? this.authorizedPages() : null}
               <Route exact path="/portfolio/:slug" element={<PortfolioDetail/>} />
               { <Route path="/:slug" element={<NoMatch />} /> }
