@@ -321,6 +321,17 @@ export default class PortfolioForm extends Component {
           )}
         </div>
 
+        {/* <div className="image-uploaders">
+          <DropzoneComponent 
+          config={this.componentConfig()} 
+          djsConfig={this.djsConfig()}
+          eventHandlers={this.handlefeaturesImageDrop()}
+          >
+
+            <div className="dz-message">Feactured Image</div>
+          </DropzoneComponent>
+        </div> */}
+
         <div>
           <button className="btn" type="submit">
             Save

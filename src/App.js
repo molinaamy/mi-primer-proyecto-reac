@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Icons from "./helpers/icons";
 
 
+
 import PortfolioContainer from "./componentes/portfolio/portfolio-container";
 import NavigationContainer from "./componentes/navigation/navigation-container";
 import Home from "./componentes/pages/home";
@@ -25,6 +26,7 @@ import PortfolioManager from "./componentes/pages/portfolio-manager";
 export default class App extends Component {
   constructor(props) {
     super(props);
+    Icons();
     this.state = {
       loggedInStatus: "NOT_LOGGED_IN"
     };
