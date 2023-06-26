@@ -11,6 +11,23 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: off whitle;
+        background-color:rgb(181, 208, 208);
+
+        .auth-form-wrapper {
+            @include input-element();
+            @include base-grid();
+            grid-gap: 21px;
+            padding: 42px;
+
+            .form-group {
+                display: flex;
+
+                svg {
+                  font-size: 2em;
+                  color: rgb(48, 217, 217);
+                  margin-right: 15px;
+                }
+            }
+        }
     }
 }

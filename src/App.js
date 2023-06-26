@@ -14,7 +14,7 @@ import About from "./componentes/pages/about";
 import Contact from "./componentes/pages/contact";
 import Blog from "./componentes/pages/blog";
 import BlogDetail from "./componentes/pages/blog-detail";
-import PortfolioDetail from "./componentes/portfolio/porfolio-details";
+import PortfolioDetail from "./componentes/portfolio/portfolio-detail";
 import Auth from "./componentes/pages/auth";
 import NoMatch from "./componentes/pages/no-match";
 import "./style/main.scss";
