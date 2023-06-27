@@ -222,10 +222,9 @@ class PortfolioForm extends Component {
             onChange={this.handleChange}
             className="select-element"
           >
-            <option value="Restaurant">Restaurant</option>
-            <option value="School">School</option>
+            <option value="Restaurant">CATEGORY</option>
             <option value="Enterprise">Enterprise</option>
-            <option value="Church">Church</option>
+            <option value="Church">Ministry-safe</option>
             <option value="WebSite">WebSite</option>
           </select>
         </div>
