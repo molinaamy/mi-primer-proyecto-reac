@@ -144,8 +144,6 @@ class Blog extends Component {
         </div>
         ) : null}
 
-
-
         <div className="content-container">{blogRecords}</div>
     
         {this.state.isLoading ? (

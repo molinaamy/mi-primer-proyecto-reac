@@ -142,13 +142,13 @@ export default class App extends Component {
                 element={PortfolioDetail}
               />
 
-              {this.state.loggedInStatus === "LOGGED_IN" ? this.authorizedPages() : null}
-              <Route exact path="/portfolio/:slug" element={<PortfolioDetail/>} />
-              { <Route path="/:slug" element={<NoMatch />} /> }
-            </Routes>
-          </div>
-        </Router>
-      </div>
-    );
-  }
-}  
+                    {this.state.loggedInStatus === "LOGGED_IN" ? this.authorizedPages() : null}
+                    <Route exact path="/portfolio/:slug" element={<PortfolioDetail/>} />
+                    { <Route path="/:slug" element={<NoMatch />} /> }
+                  </Routes>
+                </div>
+              </Router>
+            </div>
+          );
+        }
+      }  

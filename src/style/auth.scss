@@ -11,7 +11,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color:rgb(181, 208, 208);
+        background-color:rgb(247, 229, 229);
 
         .auth-form-wrapper {
             @include input-element();
@@ -24,7 +24,7 @@
 
                 svg {
                   font-size: 2em;
-                  color: rgb(48, 217, 217);
+                  color: rgb(88, 130, 130);
                   margin-right: 15px;
                 }
             }

@@ -1,5 +1,5 @@
 import React from 'react'
-import profilePicture from "../random 2.jpg";
+import profilePicture from "../4e3e0b93-b7a4-4cb4-b89c-030a79589800.jpg";
 export default function about() {
   return (
     <div className="content-pagre-wrapper">
@@ -11,23 +11,13 @@ export default function about() {
      }}
      />
      <div className="right-column">
-     Maecenas faucibus mollis interdum. Integer posuere erat a ante venenatis
-        dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis.
-        Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        Aenean lacinia bibendum nulla sed consectetur. Maecenas sed diam eget
-        risus varius blandit sit amet non magna. Morbi leo risus, porta ac
-        consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida
-        at eget metus. Donec sed odio dui. Cras mattis consectetur purus sit
-        amet fermentum. Etiam porta sem malesuada magna mollis euismod. Nulla
-        vitae elit libero, a pharetra augue. Aenean eu leo quam. Pellentesque
-        ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non
-        commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec
-        elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur
-        et. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-        commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis
-        risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac
-        consectetur ac, vestibulum at eros. Vestibulum id ligula porta felis
-        euismod semper.
+     La programación informática es el arte del proceso por el cual se limpia, codifica,
+      traza y protege el código fuente de programas computacionales, en otras palabras, 
+      es indicarle a la computadora lo que tiene que hacer.  
+      La programación informática es una de las habilidades esenciales que aprendes cuando estudias informática.
+     Detrás de todos los programas informáticos que conocemos y usamos de manera cotidiana para facilitarnos diversas actividades de nuestro día con día, existe todo un proceso para poderlos crear. Este proceso es conocido como programación, conozcamos un poco más sobre lo que conlleva este proceso.
+     Por medio de la programación se establecen los pasos a seguir para la creación del código fuente de los diversos programas informáticos.
+     Este código le indicara al programa informático que tiene que hacer y como realizarlo.
      </div>
     </div>
   );
